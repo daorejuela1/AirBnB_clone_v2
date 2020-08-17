@@ -3,7 +3,6 @@
 sudo apt-get -y update
 sudo apt-get -y install nginx
 mkdir -p /data/web_static/releases/test/
-mkdir -p /data/web_static/releases/
 mkdir -p /data/web_static/shared/
 echo "<html>
   <head>
@@ -14,9 +13,5 @@ echo "<html>
 </html>" > /data/web_static/releases/test/index.html
 sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 sudo chown -R ubuntu:ubuntu /data/
-add_location="location /hbnb_static/ {
-    alias /data/web_static/current/;
-    autoindex off;
-}"
-sed -i "/server_name localhost;/a $add_location" /etc/nginx/sites-available/default
+sed -i '|server_name localhost;|a location /hbnb_static { alias data/web_static/current/; autoindex oof;}' /etc/nginx/sites-available/default
 sudo service nginx restart
