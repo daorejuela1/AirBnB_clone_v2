@@ -15,7 +15,8 @@ def do_pack():
     try:
         file_name = "web_static_{}{}{}{}{}{}.tgz".format(now.year, now.month,
                                                          now.day, now.hour,
-                                                         now.minute, now.second)
+                                                         now.minute,
+                                                         now.second)
         local("tar -cvzf versions/{} web_static".format(file_name))
         return (file_name)
     except:
