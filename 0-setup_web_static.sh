@@ -18,5 +18,5 @@ add_location="location /hbnb_static/ {
     alias /data/web_static/current/;
     autoindex off;
 }"
-sed -i "/server_name localhost;/a ${add_location}" /etc/nginx/sites-available/default
+sed -i "/server_name localhost;/a $add_location" /etc/nginx/sites-available/default
 sudo service nginx restart
