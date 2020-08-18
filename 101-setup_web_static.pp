@@ -35,5 +35,8 @@ line   => 'location /hbnb_static/ { alias /data/web_static/current/; autoindex o
 }
 
 ->service { 'nginx':
-ensure     => running,
+ensure  => running,
+require => Package['nginx'],
 }
+
+exec {'/usr/bin/env service nginx restart':}
