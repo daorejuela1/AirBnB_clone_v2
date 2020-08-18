@@ -55,5 +55,5 @@ def deploy():
     file_name = do_pack()
     if (not file_name):
         return False
-    worked = do_deploy(file_name)
+    worked = do_deploy("versions/{}".format(file_name))
     return worked
