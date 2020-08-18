@@ -14,7 +14,14 @@ ensure => installed,
 }
 
 ->file {'/data/web_static/releases/test/index.html':
-content => 'Holberton School for the win yeah!\n',
+  content => "<html>
+  <head>
+  </head>
+  <body>
+    Holberton School
+  </body>
+</html>",
+  ensure => present,
 }
 
 -> exec {'/usr/bin/env ln -sf /data/web_static/releases/test/ /data/web_static/current':}
