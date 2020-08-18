@@ -14,6 +14,7 @@ ensure => installed,
 }
 
 ->file {'/data/web_static/releases/test/index.html':
+  ensure  => present,
   content => "<html>
   <head>
   </head>
@@ -21,7 +22,6 @@ ensure => installed,
     Holberton School
   </body>
 </html>",
-  ensure => present,
 }
 
 -> exec {'/usr/bin/env ln -sf /data/web_static/releases/test/ /data/web_static/current':}
