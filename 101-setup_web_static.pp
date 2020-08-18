@@ -39,4 +39,4 @@ ensure  => running,
 require => Package['nginx'],
 }
 
-exec {'/usr/bin/env service nginx restart':}
+->exec {'/usr/bin/env service nginx restart':}
