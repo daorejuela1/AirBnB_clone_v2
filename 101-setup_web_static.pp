@@ -11,6 +11,8 @@ ensure => installed,
   '/data/web_static/releases/test/',
   '/data/web_static/shared/', ]:
   ensure => directory,
+  owner  => 'ubuntu',
+  group  => 'ubuntu',
 }
 
 ->file {'/data/web_static/releases/test/index.html':
@@ -22,6 +24,8 @@ ensure => installed,
     Holberton School
   </body>
 </html>",
+  owner  => 'ubuntu',
+  group  => 'ubuntu',
 }
 
 -> exec {'/usr/bin/env ln -sf /data/web_static/releases/test/ /data/web_static/current':}
@@ -32,6 +36,7 @@ ensure => present,
 path   => '/etc/nginx/sites-available/default',
 after  => 'listen 80 default_server;',
 line   => 'location /hbnb_static/ { alias /data/web_static/current/; autoindex off;}',
+require => Package['nginx'],
 }
 
 ->service { 'nginx':
