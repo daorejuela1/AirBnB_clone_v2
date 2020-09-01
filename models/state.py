@@ -21,6 +21,6 @@ class State(BaseModel, Base):
             """ getter method for cities"""
             cities_dict = {}
             for key in storage.all(City):
-                if self.id in key:
+                if self.id in storage.all(City)[key].state_id:
                     cities_dict[key] = storage.all(City)[key]
             return cities_dict
