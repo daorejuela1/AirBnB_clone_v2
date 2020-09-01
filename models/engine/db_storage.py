@@ -90,4 +90,5 @@ class DBStorage():
         self.__session = Session()
 
     def close(self):
-        self.__session.remove()
+        """ resets the session from the database """
+        self.__session.close()
