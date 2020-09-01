@@ -4,6 +4,7 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from models import storage
+from models.city import City
 from os import environ
 
 
@@ -16,7 +17,7 @@ class State(BaseModel, Base):
         cities = relationship("City", backref="state", cascade="all, delete")
     else:
         @property
-        def get_cities(self):
+        def cities(self):
             """ getter method for cities"""
             cities_dict = {}
             for key in storage.all(City):
