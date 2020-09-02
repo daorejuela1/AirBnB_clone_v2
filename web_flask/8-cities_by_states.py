@@ -5,7 +5,6 @@ Starts a server
 from flask import Flask, render_template
 from models import storage
 from models.state import State
-from models.city import City
 
 
 app = Flask(__name__)
@@ -59,7 +58,6 @@ def state_list(num=None):
 @app.route('/cities_by_states')
 def cities_state_list(num=None):
     states = storage.all(State).values()
-    cities = storage.all(City).values()
     return render_template("8-cities_by_states.html", states=states)
 
 
