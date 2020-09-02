@@ -56,7 +56,7 @@ def state_list(num=None):
 
 
 @app.route('/states/', defaults={'id': None})
-@app.route('/states/<string:id>')
+@app.route('/states/<id>')
 def statest(id=None):
     inlist = 0
     states = storage.all(State).values()
