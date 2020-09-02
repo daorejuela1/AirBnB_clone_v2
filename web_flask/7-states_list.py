@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!usr/bin/python3
 """
 Starts a server
 """
@@ -8,8 +8,9 @@ from models.state import State
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
+
 @app.teardown_appcontext
-def hbnb_close():
+def hbnb_close(self):
     storage.close()
 
 
@@ -48,8 +49,8 @@ def return_page(num=None):
 
 @app.route('/states_list')
 def state_list(num=None):
-    storage.all(State)
-    return render_template("7-states_list.html", value=num)
+    states = storage.all(State).values()
+    return render_template("7-states_list.html", states=states)
 
 
 @app.route('/number_odd_or_even/<int:num>')
